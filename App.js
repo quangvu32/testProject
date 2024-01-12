@@ -3,58 +3,58 @@ import { StyleSheet, Text, View, Button, Alert, Image, FlatList, TouchableOpacit
 import axios from 'axios';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {jwtDecode} from 'jwt-decode';
+// import {jwtDecode} from 'jwt-decode';
 
-Stack = createStackNavigator();
-const renderItem = ({item}) => {
-  return(
-  <View style={styles.itemList} key = {item.id}>
-        <TouchableOpacity onPress={() => {Alert.alert(item.title, item.description)}}>
-            <Image style={styles.image} source={{uri: item.image}}/>
-            <Text style={styles.itemText}>${item.price}</Text>
-        </TouchableOpacity>
-  </View>
-  );
-}
+// Stack = createStackNavigator();
+// const renderItem = ({item}) => {
+//   return(
+//   <View style={styles.itemList} key = {item.id}>
+//         <TouchableOpacity onPress={() => {Alert.alert(item.title, item.description)}}>
+//             <Image style={styles.image} source={{uri: item.image}}/>
+//             <Text style={styles.itemText}>${item.price}</Text>
+//         </TouchableOpacity>
+//   </View>
+//   );
+// }
 
-const Menu = ({navigation}) => {
-  const[tokens, setToken] = useState([])
-  useEffect(() => {
-  axios.get('https://fakestoreapi.com/products')
+// const Menu = ({navigation}) => {
+//   const[tokens, setToken] = useState([])
+//   useEffect(() => {
+//   axios.get('https://fakestoreapi.com/products')
   
-  .then((response)=>{
-    setToken(response.data);
-    //onst decode = jwtDecode(response.data.token);
-    console.log('Response:', response.data);
-    //console.log('Token:', decode);
-  })
-  .catch((error)=>{
-      console.log(error);
-  })
-  .then(()=>{
+//   .then((response)=>{
+//     setToken(response.data);
+//     //onst decode = jwtDecode(response.data.token);
+//     console.log('Response:', response.data);
+//     //console.log('Token:', decode);
+//   })
+//   .catch((error)=>{
+//       console.log(error);
+//   })
+//   .then(()=>{
     
-      console.log('Done');
-  });
-}, []);
-  return(
-    <FlatList
-              data = {tokens}
-              renderItem={renderItem}
-              numColumns={2}
-              keyExtractor={(item) => item.id.toString()}
-              style={styles.container}
-          />
-  );
-}
+//       console.log('Done');
+//   });
+// }, []);
+//   return(
+//     <FlatList
+//               data = {tokens}
+//               renderItem={renderItem}
+//               numColumns={2}
+//               keyExtractor={(item) => item.id.toString()}
+//               style={styles.container}
+//           />
+//   );
+// }
 
-const MainMenu = ({navigation}) => {
-  return(
-    <View style={styles.container}>
-      <Text style={styles.title}>Menu</Text>
-      <Button title="Go to Menu" onPress={() => navigation.navigate('Menu')} />
-    </View>
-  );
-}
+// const MainMenu = ({navigation}) => {
+//   return(
+//     <View style={styles.container}>
+//       <Text style={styles.title}>Menu</Text>
+//       <Button title="Go to Menu" onPress={() => navigation.navigate('Menu')} />
+//     </View>
+//   );
+// }
 const App = () => {
   
   return (
